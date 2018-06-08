@@ -27,12 +27,33 @@ class PersonDetailViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         nameTxt.text = "\(person.firstName) \(person.lastName)"
-        bdayTxt.text = person.birthday
+        bdayTxt.text = birthdayParse(birthday: person.birthday)
         mobileTxt.text = person.mobileNumber
         emailTxt.text = person.emailAddress
         addressTxt.text = person.address
         contactPersonTxt.text = person.contactPerson.name
         contactPersonNumberTxt.text = person.contactPerson.contactNumber
+        let age = ageCalculator(birthday: person.birthday)
+        ageTxt.text = "\(age)"
+    }
+    
+    func ageCalculator(birthday: String) -> Int{
+        var age = 0
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "mm/dd/yyyy"
+        let date = dateFormatter.date(from: birthday) as! Date
+        let calendar = NSCalendar.current
+        let components = calendar.dateComponents([.year], from: date, to: Date())
+        age = components.year!
+        return age
+    }
+    
+    func birthdayParse(birthday: String) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "mm/dd/yyyy"
+        let date = dateFormatter.date(from: birthday)
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return  dateFormatter.string(from: date!)
     }
     
     override func didReceiveMemoryWarning() {

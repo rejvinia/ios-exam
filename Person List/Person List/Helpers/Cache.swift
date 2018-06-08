@@ -27,7 +27,7 @@ class Cache{
                     person.birthday = (item as AnyObject).value(forKey: "birthday") as! String
                     person.emailAddress = (item as AnyObject).value(forKey: "emailAddress") as! String
                     person.address = (item as AnyObject).value(forKey: "address") as! String
-                    person.birthday = (item as AnyObject).value(forKey: "lastName") as! String
+                    person.mobileNumber = (item as AnyObject).value(forKey: "mobileNumber") as! String
                     let contactPerson = ContactPerson()
                     contactPerson.name = ((item as AnyObject).value(forKey: "contactPerson") as! NSDictionary).value(forKey: "name") as! String
                     contactPerson.contactNumber = ((item as AnyObject).value(forKey: "contactPerson") as! NSDictionary).value(forKey: "contactNumber") as! String
